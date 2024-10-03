@@ -27,7 +27,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 import Header from './Header'; // Import Header component
 
-// Lazy load TaskItem component
+
 const TaskItem = lazy(() => import('./TaskItem'));
 
 const TaskList = () => {
