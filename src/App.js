@@ -42,7 +42,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Box
         sx={{
-          backgroundImage: 'url(/bg.png)', // ชี้ไปยังไฟล์ภาพที่อยู่ในโฟลเดอร์ public
+          backgroundImage: `url(${process.env.PUBLIC_URL}/bg.png)`, // ใช้ PUBLIC_URL เพื่อกำหนดพาธ
           backgroundSize: 'cover',          // ปรับขนาดภาพให้ครอบคลุมทั้งหมด
           backgroundRepeat: 'no-repeat',    // ไม่ให้ภาพซ้ำ
           backgroundPosition: 'center',     // จัดตำแหน่งภาพให้อยู่กึ่งกลาง
