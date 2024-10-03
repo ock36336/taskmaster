@@ -40,26 +40,38 @@ const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            {/* Redirect root path based on authentication */}
-            <Route path="/" element={user ? <Navigate to="/tasks" replace /> : <Auth />} />
-            {/* Protected TaskList route */}
-            <Route
-              path="/tasks"
-              element={
-                <ProtectedRoute user={user}>
-                  <TaskList />
-                </ProtectedRoute>
-              }
-            />
-            {/* Catch-all route to redirect to root */}
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </Suspense>
-      </Router>
-      <ToastContainer position="bottom-right" /> {/* ตำแหน่งของ Toast */}
+      <Box
+        sx={{
+          backgroundImage: 'url(/bg.png)', // ชี้ไปยังไฟล์ภาพที่อยู่ในโฟลเดอร์ public
+          backgroundSize: 'cover',          // ปรับขนาดภาพให้ครอบคลุมทั้งหมด
+          backgroundRepeat: 'no-repeat',    // ไม่ให้ภาพซ้ำ
+          backgroundPosition: 'center',     // จัดตำแหน่งภาพให้อยู่กึ่งกลาง
+          minHeight: '100vh',               // ให้พื้นหลังครอบคลุมความสูงของ viewport
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <Router>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              {/* Redirect root path based on authentication */}
+              <Route path="/" element={user ? <Navigate to="/tasks" replace /> : <Auth />} />
+              {/* Protected TaskList route */}
+              <Route
+                path="/tasks"
+                element={
+                  <ProtectedRoute user={user}>
+                    <TaskList />
+                  </ProtectedRoute>
+                }
+              />
+              {/* Catch-all route to redirect to root */}
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </Suspense>
+        </Router>
+        <ToastContainer position="bottom-right" /> {/* ตำแหน่งของ Toast */}
+      </Box>
     </ThemeProvider>
   );
 };

@@ -35,14 +35,15 @@ const Auth = () => {
   };
 
   return (
-    <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '100vh', backgroundColor: '#f4f6f8' }}>
+    <Grid container justifyContent="center" alignItems="center" style={{ minHeight: '100vh' }}>
       <Grid item xs={10} sm={8} md={4}>
         <Paper
           elevation={6}
           sx={{
             padding: '40px',
-            backgroundColor: 'white',
+            backgroundColor: 'rgba(255, 255, 255, 0.9)', // ลดความโปร่งใสเพื่อให้พื้นหลังสามารถมองเห็นได้บางส่วน
             borderRadius: '12px',
+            boxShadow: '0 4px 20px rgba(0,0,0,0.1)', // เพิ่มเงาให้กับ Paper
           }}
         >
           <Typography variant="h5" align="center" gutterBottom>
