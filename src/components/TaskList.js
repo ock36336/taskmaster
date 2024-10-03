@@ -63,7 +63,7 @@ const TaskList = () => {
         if (task.dueDateTime && !task.notified) {
           const taskTime = dayjs(task.dueDateTime);
           const diff = taskTime.diff(now, 'minute');
-          if (diff === 3) { // หากเหลือเวลา 5 นาที
+          if (diff === 3) { // หากเหลือเวลา 3 นาที
             toast.info(
               <div>
                 <strong>Reminder</strong>
