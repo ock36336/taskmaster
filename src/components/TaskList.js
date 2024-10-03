@@ -21,8 +21,6 @@ import {
   Grid,
 } from '@mui/material';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
-import { signOut } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { LocalizationProvider, DateTimePicker } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -43,7 +41,6 @@ const TaskList = () => {
   const [editedTask, setEditedTask] = useState('');
   const [editedCategory, setEditedCategory] = useState('');
   const [dueDateTime, setDueDateTime] = useState(dayjs().add(1, 'hour'));
-  const navigate = useNavigate();
 
   useEffect(() => {
     const userId = auth.currentUser.uid;
@@ -171,18 +168,6 @@ const TaskList = () => {
       });
       closeEditDialog();
       toast.success('แก้ไขงานสำเร็จ!');
-    }
-  };
-
-  // Logout Function
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      toast.success('ออกจากระบบสำเร็จ!');
-      navigate('/'); // Redirect to Auth component
-    } catch (error) {
-      console.error("Logout Error:", error);
-      toast.error(error.message);
     }
   };
 
